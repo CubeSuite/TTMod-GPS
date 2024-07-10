@@ -34,6 +34,9 @@ namespace GPS
         private void OnGUI() {
             if (!ModUtils.hasGameLoaded) return;
 
+            if (Player.instance == null) return;
+            if (Player.instance.fpcontroller == null) return;
+
             Vector3 playerPosition = Player.instance.fpcontroller.transform.position;
             string x = playerPosition.x.ToString("#").PadLeft(5);
             string y = playerPosition.y.ToString("#").PadLeft(5);
