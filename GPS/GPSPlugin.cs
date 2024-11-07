@@ -12,7 +12,7 @@ namespace GPS
     {
         private const string MyGUID = "com.equinox.GPS";
         private const string PluginName = "GPS";
-        private const string VersionString = "1.0.0";
+        private const string VersionString = "2.0.0";
 
         private static readonly Harmony Harmony = new Harmony(MyGUID);
         public static ManualLogSource Log = new ManualLogSource(PluginName);
@@ -32,7 +32,8 @@ namespace GPS
         }
 
         private void OnGUI() {
-            if (!ModUtils.hasGameLoaded) return;
+            if (!EMU.LoadingStates.hasGameLoaded) return;
+            if (UIManager.instance.anyMenuOpen) return;
 
             if (Player.instance == null) return;
             if (Player.instance.fpcontroller == null) return;
